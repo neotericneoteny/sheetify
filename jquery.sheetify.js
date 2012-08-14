@@ -111,7 +111,7 @@
 		}
 
 		function createPrompt() {
-			var p =$( '<span>'+options.message+'</span>' );
+			var p =$( '<span></span>' ).html( options.message );
 			p.addClass( SHEETIFY_CSS_PROMPT_CLASS );
 			p.css( 'position', 'relative' );
 			p.css( 'display', 'inline-block' );
