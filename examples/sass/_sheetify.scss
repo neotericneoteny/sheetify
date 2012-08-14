@@ -1,0 +1,19 @@
+@import "variables";
+@import "compass";
+
+.neo-overlay-sheet {
+  position: absolute;
+  background-color: #fff !important;
+  opacity: 0.75 !important;
+  background-position: initial initial;
+  background-repeat: initial initial;
+
+  &.skylight {
+    background-color: #d1f5ff !important;
+  }
+
+  .prompt {
+    font-size: 2em;
+    color: #222;
+  }
+}
