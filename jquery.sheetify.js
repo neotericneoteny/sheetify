@@ -46,8 +46,8 @@
 					l: parseNumberOrDefaultValue( this.css( 'border-left' ), 0 ),
 					r: parseNumberOrDefaultValue( this.css( 'border-right' ), 0 )
 				};
-				var h = parseNumberOrDefaultValue( this.innerHeight(true), 0 ),
-					w = parseNumberOrDefaultValue( this.innerWidth(false), 0 ),
+				var h = parseNumberOrDefaultValue( this.innerHeight(), 0 ),
+					w = parseNumberOrDefaultValue( this.innerWidth(), 0 ),
 					l = parseNumberOrDefaultValue( this.offset().left + border.l, 0 ),
 					t = parseNumberOrDefaultValue( this.offset().top + border.t, 0 ),
 					r = parseNumberOrDefaultValue( l+w+border.r, 0 ),
