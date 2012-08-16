@@ -12,6 +12,15 @@
     background-color: #d1f5ff !important;
   }
 
+  &.rounded {
+      .prompt {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        @include border-radius(15px);
+      }
+  }
+
   .prompt {
     font-size: 2em;
     color: #222;
