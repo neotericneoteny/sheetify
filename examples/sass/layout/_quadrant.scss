@@ -1,0 +1,17 @@
+.quadrant {
+	height: 301px;
+	margin: 0px;
+	border: 1px solid #000;
+
+	&.alpha {
+		border-right: none;
+	}
+	
+	button {
+		width: 100%;
+	}
+}
+
+#quadrant-1, #quadrant-2 {
+	border-bottom: none;
+}
