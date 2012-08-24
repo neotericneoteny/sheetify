@@ -10,8 +10,10 @@
  * 
  * Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
  */
-(function($) {
+(function(window) {
 	'use strict';
+
+    var $ = window.jQuery;
 
 	// CSS Class Names
 	var SHEETIFY_CSS_CONTAINER_CLASS = 'neo-overlay-sheet';
@@ -46,8 +48,8 @@
 					l: parseNumberOrDefaultValue( this.css( 'border-left' ), 0 ),
 					r: parseNumberOrDefaultValue( this.css( 'border-right' ), 0 )
 				};
-				var h = parseNumberOrDefaultValue( this.innerHeight(), 0 ),
-					w = parseNumberOrDefaultValue( this.innerWidth(), 0 ),
+				var h = parseNumberOrDefaultValue( this.innerHeight(true), 0 ),
+					w = parseNumberOrDefaultValue( this.innerWidth(false), 0 ),
 					l = parseNumberOrDefaultValue( this.offset().left + border.l, 0 ),
 					t = parseNumberOrDefaultValue( this.offset().top + border.t, 0 ),
 					r = parseNumberOrDefaultValue( l+w+border.r, 0 ),
@@ -55,7 +57,12 @@
 					z = parseNumberOrDefaultValue( this.css( 'z-index' ), 1 );
 
 				var sheet = createSheet( h, w, l, t, r, b, z );
-				this.append( sheet );
+				var target = this;
+
+				this.append(sheet);
+
+				// Keeps the sheet's offset in sync with the target's offset.
+				initTargetOffsetMirroring(target, sheet);
 
 				// Render prompt text if input provided.
 				if( options.message!==null&&options.message!==undefined ) {
@@ -110,14 +117,25 @@
 			return sheet;
 		}
 
+        function initTargetOffsetMirroring($target, $sheet) {
+            $target.resize(function() {
+                $sheet.offset($target.offset());
+            });
+            $(window).resize(function() {
+                $sheet.offset($target.offset());
+            });
+            $sheet.offset(target.offset());
+        }
+
 		function createPrompt() {
 			var p =$( '<span></span>' ).html( options.message );
 			p.addClass( SHEETIFY_CSS_PROMPT_CLASS );
 			p.css( 'position', 'relative' );
 			p.css( 'display', 'inline-block' );
 			p.css( 'margin', 'auto auto' );
+			p.css( 'line-height', '1.2em' );
 			return p;
 		}
 	};
 
-})(jQuery);
+})(window);
