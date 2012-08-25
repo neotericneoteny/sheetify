@@ -144,6 +144,7 @@
             p.css( 'display', 'inline-block' );
             p.css( 'margin', 'auto auto' );
             p.css( 'line-height', '1.2em' );
+            p.css( 'font-size', '1em' );
             return p;
         }
     };
