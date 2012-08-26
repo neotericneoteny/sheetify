@@ -1,0 +1,14 @@
+@import "variables";
+
+#main {
+  #container {
+    #resizable-view {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+
+      border: 1px solid $bordergray;
+      background-color: $altgray;
+    }
+  }
+}

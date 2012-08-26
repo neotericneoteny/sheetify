@@ -3,7 +3,7 @@
 
 .neo-overlay-sheet {
   position: absolute;
-  background-color: #fff !important;
+  background-color: #009dff !important;
   opacity: 0.75 !important;
   background-position: initial initial;
   background-repeat: initial initial;
@@ -15,6 +15,7 @@
   &.rounded {
       .prompt {
         background-color: #000;
+        font-size: 1.5em !important;
         color: #fff;
         padding: 20px;
         @include border-radius(15px);

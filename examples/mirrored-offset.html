@@ -1,0 +1,55 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	
+	<title>Sheetify Demo - Mirrored Offset</title>
+
+	<link href="css/base.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script src="https://raw.github.com/cowboy/jquery-resize/master/jquery.ba-resize.min.js"></script>
+	<script src="../jquery.sheetify.js?v=1.0"></script>
+	<script type="text/javascript">
+		(function(window) {
+			var $ = window.jQuery;
+
+			$(function() {
+				$('#resizable-view').sheetify({message:'I resize whenever my target resizes!',altClassName:'rounded'});
+
+				$(window).resize(function(e) {
+					syncViewHeightWithWindowHeight();
+				});syncViewHeightWithWindowHeight();
+			});
+
+			function syncViewHeightWithWindowHeight() {
+				$('#resizable-view').height($(window).height()-$('#resizable-view').offset().top-parseInt($('#resizable-view').css('margin-bottom')));
+			}
+		})(window);
+	</script>
+</head>
+<body>
+	<div id="top">
+    	<div id="container">
+
+        	<header id="global-header" class="clearfix">
+				<h2>Mirrored Offset Demo</h2>
+			</header>
+
+			<div id="main" role="main">
+				<div id="container">
+					<div id="resizable-view"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
