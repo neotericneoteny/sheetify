@@ -24,23 +24,23 @@
 	var COVER_COMMAND = 'cover';
 
 	/**
-	 * @param options An Object consisting of key/value pairs used to render a sheet overlay on top of the selector.
+	 * @param $options An Object consisting of key/value pairs used to render a sheet overlay on top of the selector.
 	 * As a convenience, passing a String instead of an Object will use the default sheet styles and render the
 	 * provided text in the center fo the sheet.
 	 */
-	$.fn.sheetify = function (options) {
+	$.fn.sheetify = function ($options) {
 		var target = this;
 
-		options = $.extend({
+		$options = $.extend({
 			command:COVER_COMMAND,
 			color:'rgb(255,255,255)',
 			opacity:0.75,
 			altClassName:undefined, // One or more CSS classes separated by a single space
 			message:arguments.length==1&&typeof(arguments[0])==='string'?arguments[0]:undefined,
 			hideAfterMillis:0
-		}, options);
+		}, $options);
 
-		switch (options.command) {
+		switch ($options.command) {
 
 			case REMOVE_COMMAND:
 				$(target).children('.' + SHEETIFY_CSS_CONTAINER_CLASS).remove();
@@ -50,11 +50,11 @@
 				$(target).sheetify({command:REMOVE_COMMAND});
 
 				var prompt = null;
-				var sheet = createSheet(target, options);
+				var sheet = createSheet(target, $options);
 				target.append(sheet);
 
 				// Render prompt text if input provided.
-				if (options.message !== null && options.message !== undefined) {
+				if ($options.message !== null && $options.message !== undefined) {
 					prompt = createPrompt();
 					sheet.append(prompt);
 					centerPrompt(prompt, target);
@@ -66,16 +66,16 @@
 
 				// If options.hideAfterMillis is greater than zero, we're going to invoke 'remove' command in that
 				// amount of milliseconds after showing the sheet.
-				if (options.hideAfterMillis > 0) {
+				if ($options.hideAfterMillis > 0) {
 					setTimeout(function () {
 						$(target).sheetify({command:REMOVE_COMMAND});
-					}, options.hideAfterMillis);
+					}, $options.hideAfterMillis);
 				}
 		}
 
-		function parseNumberOrDefaultValue(source, defaultValue, fn) {
-			fn = fn ? fn : parseFloat;
-			return !isNaN(fn(source)) ? fn(source) : defaultValue;
+		function parseNumberOrDefaultValue($source, $defaultValue, $fn) {
+			$fn = $fn ? $fn : parseFloat;
+			return !isNaN($fn($source)) ? $fn($source) : $defaultValue;
 		}
 
 		function createSheet($target, $options) {
@@ -161,7 +161,7 @@
 		}
 
 		function createPrompt() {
-			var p = $('<span></span>').html(options.message);
+			var p = $('<span></span>').html($options.message);
 			p.addClass(SHEETIFY_CSS_PROMPT_CLASS);
 			p.css('position', 'relative');
 			p.css('display', 'inline-block');
@@ -205,8 +205,10 @@
 		}
 
 		function centerPrompt($prompt, $target) {
-			$prompt.css('left', ($target.innerWidth() - $prompt.outerWidth(true)) / 2);
-			$prompt.css('top', ($target.innerHeight() - $prompt.outerHeight(true)) / 2);
+			if($prompt) {
+				$prompt.css('left', ($target.innerWidth() - $prompt.outerWidth(true)) / 2);
+				$prompt.css('top', ($target.innerHeight() - $prompt.outerHeight(true)) / 2);
+			}
 		}
 
 		function getDimensions($target) {
