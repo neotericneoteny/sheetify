@@ -168,12 +168,12 @@
 			p.css('margin', 'auto auto');
 			p.css('line-height', '1.2em');
 			p.css('font-size', '1em');
-			p.css('color', '#111');
+			p.css('color', '#121212');
 			return p;
 		}
 
 		/**
-		 * Listens for the window's 'resize' event and reposition the sheet and prompt accordingly.  This function
+		 * Listens for the window's 'resize' event and repositions the sheet and prompt accordingly.  This function
 		 * also listens for the 'resize' event on our target object, however, due to jQuery's limitation of only
 		 * listening to the 'resize' event on the window object the callback will never be called.
 		 *

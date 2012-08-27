@@ -24,7 +24,7 @@
 			var $ = window.jQuery;
 
 			$(function() {
-				$('#resizable-view').sheetify({message:'I resize whenever my target resizes!',altClassName:'rounded'});
+				$('#resizable-view').sheetify('I resize whenever my target resizes!');
 
 				$(window).resize(function(e) {
 					syncViewHeightWithWindowHeight();
