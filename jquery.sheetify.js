@@ -36,7 +36,7 @@
 			color:'rgb(255,255,255)',
 			opacity:0.75,
 			altClassName:undefined, // One or more CSS classes separated by a single space
-			message:arguments.length==1&&typeof(arguments[0])==='string'?arguments[0]:undefined,
+			message:arguments.length == 1 && typeof(arguments[0]) === 'string' ? arguments[0] : undefined,
 			hideAfterMillis:0
 		}, $options);
 
@@ -104,13 +104,13 @@
 			// If our target has a default position of 'static', we're going to assign it a
 			// 'relative' position so we can position the sheet absolutely inside of the target's
 			// coordinate plane.
-			if(hasDefaultPositioning($target)) {
+			if (hasDefaultPositioning($target)) {
 				$target.css('position', 'relative');
 			}
 
 			// If our target has a position of 'relative', we're going to position the sheet absolutely
 			// inside of the target's coordinate plane.
-			if(isRelativePositioned($target)) {
+			if (isRelativePositioned($target) || isAbsolutePositioned($target)) {
 				if (dimensions.height !== undefined) {
 					$sheet.css('height', 'auto');
 				}
@@ -133,8 +133,8 @@
 					$sheet.css('z-index', dimensions.zIndex * 1000);
 				}
 
-			// The target has a position other than relative so we're going to have to position
-			// the sheet in the global coordinate plane.
+				// The target has a position other than relative so we're going to have to position
+				// the sheet in the global coordinate plane.
 			} else {
 				if (dimensions.height !== undefined) {
 					$sheet.css('height', dimensions.height);
@@ -205,7 +205,7 @@
 		}
 
 		function centerPrompt($prompt, $target) {
-			if($prompt) {
+			if ($prompt) {
 				$prompt.css('left', ($target.innerWidth() - $prompt.outerWidth(true)) / 2);
 				$prompt.css('top', ($target.innerHeight() - $prompt.outerHeight(true)) / 2);
 			}
@@ -217,8 +217,8 @@
 				width = parseNumberOrDefaultValue($target.innerWidth(), 0),
 				left = parseNumberOrDefaultValue($target.offset().left + border.left, 0),
 				top = parseNumberOrDefaultValue($target.offset().top + border.top, 0),
-				right = parseNumberOrDefaultValue(left+width, 0),
-				bottom = parseNumberOrDefaultValue(top+height, 0),
+				right = parseNumberOrDefaultValue(left + width, 0),
+				bottom = parseNumberOrDefaultValue(top + height, 0),
 				zIndex = parseNumberOrDefaultValue($target.css('z-index'), 1);
 
 			return {
@@ -243,6 +243,10 @@
 
 		function isRelativePositioned($target) {
 			return $target.css('position') === 'relative';
+		}
+
+		function isAbsolutePositioned($target) {
+			return $target.css('position') === 'absolute';
 		}
 
 		function hasDefaultPositioning($target) {
