@@ -13,6 +13,16 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script src="https://raw.github.com/neotericneoteny/sheetify/master/jquery.sheetify.js"></script>
+	<script>
+		$(function() {
+			$('#main-content').on('click','#try-me', function() {
+				$('body').sheetify({message:"Hey there! I'm a white sheet with 90% opacity scheduled to self destruct in 5 seconds.",opacity:.9,hideAfterMillis:8000});
+			});
+		});
+	</script>
+
     <title>Sheetify by neotericneoteny</title>
   </head>
 
@@ -28,7 +38,7 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>Welcome to Sheetify.</h3>
+          <h3>Welcome to Sheetify.  <a href="#" id="try-me">Try me!</a></h3>
 
 <p>Sheetify is a jQuery plugin used to render a translucent sheet on top of any HTML DOM element.  A sheet's opacity level can range anywhere from fully opaque ({opacity:1}) to fully translucent ({opacity:0}) and the color of the sheet can be any valid CSS color value (e.g, hexadecimal, rgb).  Each sheet's styling may be completely customized through CSS by targeting the provided CSS class name, 'neo-overlay-sheet'.  To override the default CSS options, append '!important' in the stylesheet declaration for each style.</p>
 
