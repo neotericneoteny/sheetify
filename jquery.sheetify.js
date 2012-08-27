@@ -23,6 +23,11 @@
 	var REMOVE_COMMAND = 'remove';
 	var COVER_COMMAND = 'cover';
 
+	/**
+	 * @param options An Object consisting of key/value pairs used to render a sheet overlay on top of the selector.
+	 * As a convenience, passing a String instead of an Object will use the default sheet styles and render the
+	 * provided text in the center fo the sheet.
+	 */
 	$.fn.sheetify = function (options) {
 		var target = this;
 
@@ -31,7 +36,7 @@
 			color:'rgb(255,255,255)',
 			opacity:0.75,
 			altClassName:undefined, // One or more CSS classes separated by a single space
-			message:undefined,
+			message:arguments.length==1&&typeof(arguments[0])==='string'?arguments[0]:undefined,
 			hideAfterMillis:0
 		}, options);
 
@@ -163,6 +168,7 @@
 			p.css('margin', 'auto auto');
 			p.css('line-height', '1.2em');
 			p.css('font-size', '1em');
+			p.css('color', '#111');
 			return p;
 		}
 
