@@ -1,9 +1,14 @@
 /*!
- * Sheetify is a jQuery plugin chiefly purposed to render a translucent sheet on top of any HTML DOM element.
- * The sheet's opacity level can range anywhere from fully opaque ({opacity:1}) to fully translucent ({opacity:0})
- * and the color of the sheet can be any valid CSS color value (e.g, hexadecimal, rgb).  Each sheet's styling may
- * be completely customized through CSS by targeting the provided CSS class name, 'neo-overlay-sheet'.  To override
- * the default CSS options, append '!important' in the stylesheet declaration for each style.
+ * Sheetify is a jQuery plugin chiefly purposed to render a translucent sheet on top of any HTML element. It was
+ * designed out of the need to disable specific sections of a site without removing the section from the screen
+ * entirely. I drew my initial inspiration from OS X Sheets but as you'll see, Sheetify has a completely different
+ * set of goals altogether. I merely wanted to provide the ability to graphically disable a view and (optionally)
+ * display a simple message indicating the purpose of the sheet's presence.
+ *
+ * A sheet's opacity level can range anywhere from fully opaque to fully translucent and the color of the sheet can
+ * be any valid CSS color value (e.g, hexadecimal, rgb). Each sheet's styling may be completely customized through
+ * CSS by targeting the provided CSS class name, 'neo-overlay-sheet'. To override the default CSS options, append
+ * '!important' in the stylesheet declaration for each style.
  *
  * Copyright (c) 2012 Matthew A. Zimmer,
  * http://neotericneoteny.com
