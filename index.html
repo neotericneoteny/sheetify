@@ -45,7 +45,7 @@
 	designed out of the need to disable specific sections of a site without removing the section from
 	the screen entirely.  I drew my initial inspiration from OS X Sheets but as you'll see, Sheetify has a completely
 	different set of goals altogether.  I merely wanted to provide the ability to graphically disable a view
-	and (optionally) display a simple message indicating the purpose of the sheet's presence.
+	and (optionally) display a simple prompt message indicating the purpose of the sheet's presence.
 </p>
 <p>
 	A sheet's opacity level can range anywhere from fully opaque to fully translucent and the color of the
@@ -54,14 +54,34 @@
 	default CSS options, append '!important' in the stylesheet declaration for each style.
 </p>
 
-<h3>Usages</h3>
+<h3>Usage Example</h3>
 
 <pre><code>&lt;script&gt;
-     $('body').sheetify();
+	// Render a sheet which covers the entire body with
+	// default CSS options and no prompt message.
+	$('body').sheetify();
 &lt;/script&gt;
 </code></pre>
 
-<h3>Default CSS Settings</h3>
+<h3>Default CSS Options</h3>
+
+<p>
+	<ul>
+		<li>
+			Sheet background color: rgb(255, 255, 255)
+		</li><li>
+	        Sheet opacity: 75%
+        </li><li>
+	        Sheet position: relative
+        </li><li>
+	        Prompt color: rgb(18, 18, 18)
+        </li><li>
+	        Prompt font-size: 1em
+        </li><li>
+	        Prompt line-height: 1.2em
+        </li>
+	</ul>
+</p>
 
 <h3>License</h3>
 
